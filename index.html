@@ -1,107 +1,43 @@
-let playerRole = ''; // 'bat' or 'bowl'
-let playerScore = 0;
-let botScore = 0;
-let wickets = 0;
-let balls = 0;
-let maxBalls = 12;
-let isFirstInnings = true;
-let gameOver = false;
-let previousPlayerMoves = [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hand Cricket vs Hard Bot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🏏 Hand Cricket vs Hard Bot</h1>
 
-function toss(choice) {
-  const playerNum = Math.ceil(Math.random() * 6);
-  const botNum = Math.ceil(Math.random() * 6);
-  const sum = playerNum + botNum;
-  const won = (sum % 2 === 0 && choice === 'even') || (sum % 2 !== 0 && choice === 'odd');
+  <div id="game">
+    <div id="toss-section">
+      <p>Choose Odd or Even</p>
+      <button onclick="toss('odd')">Odd</button>
+      <button onclick="toss('even')">Even</button>
+    </div>
 
-  document.getElementById('toss-section').style.display = 'none';
+    <div id="choose-role" style="display:none;">
+      <p>You won the toss! Choose:</p>
+      <button onclick="setPlayerRole('bat')">Bat</button>
+      <button onclick="setPlayerRole('bowl')">Bowl</button>
+    </div>
 
-  if (won) {
-    document.getElementById('choose-role').style.display = 'block';
-  } else {
-    playerRole = Math.random() > 0.5 ? 'bowl' : 'bat';
-    document.getElementById('gameplay').style.display = 'block';
-    updateStatus(`Bot chose to ${playerRole === 'bat' ? 'bowl' : 'bat'}.`);
-  }
-}
+    <div id="gameplay" style="display:none;">
+      <p id="status">Your turn to play</p>
+      <div>
+        <button onclick="play(1)">1</button>
+        <button onclick="play(2)">2</button>
+        <button onclick="play(3)">3</button>
+        <button onclick="play(4)">4</button>
+        <button onclick="play(5)">5</button>
+        <button onclick="play(6)">6</button>
+      </div>
+      <p id="log"></p>
+      <p id="score">Score: 0/0</p>
+    </div>
 
-function setPlayerRole(role) {
-  playerRole = role;
-  document.getElementById('choose-role').style.display = 'none';
-  document.getElementById('gameplay').style.display = 'block';
-  updateStatus(`You chose to ${role}.`);
-}
+    <div id="result" style="display:none;"></div>
+  </div>
 
-function play(playerInput) {
-  if (gameOver) return;
-
-  const botInput = hardBotChoice();
-  previousPlayerMoves.push(playerInput);
-  if (previousPlayerMoves.length > 5) previousPlayerMoves.shift();
-
-  const isPlayerBatting = (isFirstInnings && playerRole === 'bat') || (!isFirstInnings && playerRole === 'bowl');
-
-  if (playerInput === botInput) {
-    updateLog(`You: ${playerInput} | Bot: ${botInput} → OUT!`);
-    wickets++;
-    if (wickets >= 1 || balls >= maxBalls) changeInnings();
-  } else {
-    const runs = isPlayerBatting ? playerInput : botInput;
-    if (isPlayerBatting) playerScore += runs;
-    else botScore += runs;
-
-    updateLog(`You: ${playerInput} | Bot: ${botInput} → ${runs} run(s)`);
-  }
-
-  balls++;
-  updateScore();
-
-  if (balls >= maxBalls && !gameOver) changeInnings();
-}
-
-function updateLog(msg) {
-  document.getElementById('log').innerText = msg;
-}
-
-function updateScore() {
-  document.getElementById('score').innerText = `Score: ${playerScore}/${wickets}`;
-}
-
-function updateStatus(msg) {
-  document.getElementById('status').innerText = msg;
-}
-
-function changeInnings() {
-  if (isFirstInnings) {
-    isFirstInnings = false;
-    balls = 0;
-    wickets = 0;
-    updateLog('');
-    updateStatus(`2nd Innings: ${playerRole === 'bat' ? 'Bot batting' : 'You batting'}`);
-  } else {
-    gameOver = true;
-    document.getElementById('gameplay').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-
-    let resultText = '';
-    if (playerScore > botScore) resultText = '🎉 You won!';
-    else if (playerScore < botScore) resultText = '💀 Bot wins!';
-    else resultText = '🤝 Match Draw!';
-
-    document.getElementById('result').innerText = `Final Score\nYou: ${playerScore}\nBot: ${botScore}\n${resultText}`;
-  }
-}
-
-// Simple prediction bot using previous player patterns
-function hardBotChoice() {
-  if (previousPlayerMoves.length < 3) return Math.ceil(Math.random() * 6);
-
-  const freq = [0, 0, 0, 0, 0, 0];
-  for (let move of previousPlayerMoves) freq[move - 1]++;
-
-  let maxFreq = Math.max(...freq);
-  let likely = freq.findIndex(f => f === maxFreq) + 1;
-
-  // Slight randomness to avoid being too predictable
-  return Math.random() < 0.7 ? likely : Math.ceil(Math.random() * 6);
-}
+  <script src="script.js"></script>
+</body>
+</html>
