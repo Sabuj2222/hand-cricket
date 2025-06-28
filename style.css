@@ -1,7 +1,7 @@
 /* Global body styling */
 body {
   font-family: Arial, sans-serif;
-  background-image:('stadium.jpg');
+background-image: url('images/stadium.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
