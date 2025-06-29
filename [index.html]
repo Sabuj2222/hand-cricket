@@ -1,18 +1,27 @@
-<!-- [index.html] -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hand Cricket - Home</title>
+  <title>Hand Cricket Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="home">
-  <h1>🏏 Hand Cricket Game </h1>
-  <div class="menu">
-    <button onclick="location.href='game.html'">🎮 Start Game</button>
-    <button onclick="alert('Pick a number between 1-6. If it matches the bot, you’re out! You have 5 wickets.')">📘 Instructions</button>
+<body>
+  <h1>🏏 Hand Cricket Game</h1>
+  <p>Choose a number (1–6):</p>
+  <div id="buttons">
+    <button onclick="playTurn(1)">1</button>
+    <button onclick="playTurn(2)">2</button>
+    <button onclick="playTurn(3)">3</button>
+    <button onclick="playTurn(4)">4</button>
+    <button onclick="playTurn(5)">5</button>
+    <button onclick="playTurn(6)">6</button>
   </div>
-  <footer>Made by Sabuj • Hosted on GitHub</footer>
+
+  <div id="score"></div>
+  <div id="log"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
