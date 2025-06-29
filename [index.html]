@@ -3,25 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hand Cricket Game</title>
+  <title>Hand Cricket - Home</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🏏 Hand Cricket Game</h1>
-  <p>Choose a number (1–6):</p>
-  <div id="buttons">
-    <button onclick="playTurn(1)">1</button>
-    <button onclick="playTurn(2)">2</button>
-    <button onclick="playTurn(3)">3</button>
-    <button onclick="playTurn(4)">4</button>
-    <button onclick="playTurn(5)">5</button>
-    <button onclick="playTurn(6)">6</button>
-  </div>
-
-  <div id="score"></div>
-  <div id="log"></div>
-
-  <script src="script.js"></script>
+  <h1>🏏 Welcome to Hand Cricket!</h1>
+  <button onclick="window.location.href='game.html'">Start Game</button>
 </body>
 </html>
-

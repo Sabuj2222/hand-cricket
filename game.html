@@ -1,37 +1,29 @@
-<!-- game.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hand Cricket - Play</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hand Cricket Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🏏 Hand Cricket vs Bot</h1>
+  <h1>🎮 Hand Cricket Game</h1>
+  <p>Select a number (1 to 6):</p>
 
-  <div class="scorecard">
-    <p><strong>Runs:</strong> <span id="runs">0</span></p>
-    <p><strong>Wickets:</strong> <span id="wickets">0</span>/5</p>
-    <p><strong>Balls:</strong> <span id="balls">0</span></p>
+  <div id="buttons">
+    <button onclick="playTurn(1)">1</button>
+    <button onclick="playTurn(2)">2</button>
+    <button onclick="playTurn(3)">3</button>
+    <button onclick="playTurn(4)">4</button>
+    <button onclick="playTurn(5)">5</button>
+    <button onclick="playTurn(6)">6</button>
   </div>
 
-  <div class="input">
-    <p>Choose a number (1-6):</p>
-    <div id="buttons">
-      <button onclick="play(1)">1</button>
-      <button onclick="play(2)">2</button>
-      <button onclick="play(3)">3</button>
-      <button onclick="play(4)">4</button>
-      <button onclick="play(5)">5</button>
-      <button onclick="play(6)">6</button>
-    </div>
-  </div>
-
-  <p id="result"></p>
-
-  <button onclick="location.href='[index.html]'">🔙 Back to Menu</button>
+  <div id="score"></div>
+  <div id="log"></div>
+  <button onclick="window.location.href='[index.html]'">🏠 Back to Home</button>
 
   <script src="script.js"></script>
+  <script src="scorecard.js"></script>
 </body>
 </html>
