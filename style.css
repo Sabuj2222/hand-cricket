@@ -6,7 +6,7 @@ body {
   text-align: center;
   background: url('zstadium.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .home h1 {
@@ -31,7 +31,7 @@ button {
 }
 
 button:hover {
-  background: #218838;
+  background: #b3c8b7;
 }
 
 footer {
