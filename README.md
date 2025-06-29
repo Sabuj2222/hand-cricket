@@ -1,3 +1,7 @@
+# 🌐 Play Live
+👉 [Click here to play](https://sabuj2222.github.io/hand-cricket/game.html)
+
+
 # 🏏 Hand Cricket Game (Single Player)
 
 <<<<<<< HEAD
@@ -48,9 +52,9 @@ A fun browser-based hand cricket game where you play against a hard bot! Built u
 - Home page with menu and instructions
 
 ## 🌐 Play Live
-👉 [Click here to play](https://your-username.github.io/handcricket-game/)
+👉 [Click here to play](https://sabuj2222.github.io/hand-cricket/game.html)
 
-> (Replace `your-username` with your actual GitHub username)
+
 
 ## 📁 File Structure
 
