@@ -36,4 +36,3 @@ function updateScore() {
 function playSound(type) {
   const sound = new Audio(type === 'out' ? 'assets/sounds/out.mp3' : 'assets/sounds/hit.mp3');
   sound.play();
-}
