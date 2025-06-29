@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="home">
-  <h1>🏏 Hand Cricket Game</h1>
+  <h1>🏏 Hand Cricket Game </h1>
   <div class="menu">
     <button onclick="location.href='game.html'">🎮 Start Game</button>
     <button onclick="alert('Pick a number between 1-6. If it matches the bot, you’re out! You have 5 wickets.')">📘 Instructions</button>
