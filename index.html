@@ -1,45 +1,18 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hand Cricket vs Hard Bot</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hand Cricket - Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <h1>🏏 Hand Cricket vs Hard Bot</h1>
-
-  <div id="game">
-    <div id="toss-section">
-      <p>Choose Odd or Even</p>
-      <button onclick="toss('odd')">Odd</button>
-      <button onclick="toss('even')">Even</button>
-    </div>
-
-    <div id="choose-role" style="display:none;">
-      <p>You won the toss! Choose:</p>
-      <button onclick="setPlayerRole('bat')">Bat</button>
-      <button onclick="setPlayerRole('bowl')">Bowl</button>
-    </div>
-
-    <div id="gameplay" style="display:none;">
-      <p id="status">Your turn to play</p>
-      <div>
-        <button onclick="play(1)">1</button>
-        <button onclick="play(2)">2</button>
-        <button onclick="play(3)">3</button>
-        <button onclick="play(4)">4</button>
-        <button onclick="play(5)">5</button>
-        <button onclick="play(6)">6</button>
-      </div>
-      <p id="log"></p>
-      <p id="score">Score: 0/0</p>
-    </div>
-
-    <div id="result" style="display:none;"></div>
+<body class="home">
+  <h1>🏏 Hand Cricket Game</h1>
+  <div class="menu">
+    <button onclick="location.href='game.html'">🎮 Start Game</button>
+    <button onclick="alert('Pick a number between 1-6. If it matches the bot, you’re out! You have 5 wickets.')">📘 Instructions</button>
   </div>
-
-  <script src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
-
+  <footer>Made by You • Hosted on GitHub</footer>
 </body>
 </html>
