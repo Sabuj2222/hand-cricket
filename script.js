@@ -1,39 +1,64 @@
-// script.js
-let runs = 0;
-let wickets = 0;
-let balls = 0;
+let userScore = 0;
+let userWickets = 0;
+let botScore = 0;
+let botWickets = 0;
+let isUserBatting = true;
+let isGameOver = false;
+let target = 0;
 
-function play(playerChoice) {
-  const botChoice = Math.floor(Math.random() * 6) + 1;
-  balls++;
+function playTurn(userInput) {
+    if (isGameOver) return;
 
-  const resultText = document.getElementById("result");
+    const botInput = Math.floor(Math.random() * 6) + 1;
 
-  if (playerChoice === botChoice) {
-    wickets++;
-    resultText.innerText = `Out! You chose ${playerChoice} and Bot chose ${botChoice}.`;
-    playSound('out');
-  } else {
-    runs += playerChoice;
-    resultText.innerText = `You scored ${playerChoice} (Bot chose ${botChoice})`;
-    playSound('hit');
-  }
+    if (isUserBatting) {
+        if (userInput === botInput) {
+            userWickets++;
+            logMessage(`😵 OUT! You chose ${userInput}, Bot chose ${botInput}`);
+        } else {
+            userScore += userInput;
+            logMessage(`🏏 You chose ${userInput}, Bot chose ${botInput}`);
+        }
 
-  updateScore();
+        updateScore();
 
-  if (wickets >= 5) {
-    resultText.innerText += `\nGame Over! You scored ${runs} runs in ${balls} balls.`;
-    document.getElementById("buttons").style.display = "none";
-  }
+        if (userWickets >= 5) {
+            isUserBatting = false;
+            target = userScore + 1;
+            logMessage(`🧢 All out! Bot needs ${target} runs to win.`);
+        }
+    } else {
+        if (userInput === botInput) {
+            botWickets++;
+            logMessage(`💥 BOT OUT! You chose ${userInput}, Bot chose ${botInput}`);
+        } else {
+            botScore += botInput;
+            logMessage(`🤖 Bot chose ${botInput}, You chose ${userInput}`);
+        }
+
+        updateScore();
+
+        if (botScore >= target) {
+            isGameOver = true;
+            logMessage("🏆 Bot wins!");
+        } else if (botWickets >= 5) {
+            isGameOver = true;
+            logMessage("🎉 You win!");
+        }
+    }
 }
 
 function updateScore() {
-  document.getElementById("runs").innerText = runs;
-  document.getElementById("wickets").innerText = wickets;
-  document.getElementById("balls").innerText = balls;
+    document.getElementById("score").innerHTML = `
+        You: ${userScore}/${userWickets} <br>
+        Bot: ${botScore}/${botWickets} ${!isUserBatting ? '(Chasing)' : ''}
+    `;
 }
 
-function playSound(type) {
-  const sound = new Audio(type === 'out' ? 'assets/sounds/out.mp3' : 'assets/sounds/hit.mp3');
-  sound.play();
+function logMessage(msg) {
+    const log = document.getElementById("log");
+    const entry = document.createElement("div");
+    entry.textContent = msg;
+    log.prepend(entry);
 }
+
